@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeweb-deployment
+  namespace: node-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeweb
+  template:
+    metadata:
+      labels:
+        app: nodeweb
+    spec:
+      containers:
+      - name: nodeweb
+        image: 195350159/nodeweb:1.0
+        ports:
+          - containerPort: 3000
+            hostPort: 3000
